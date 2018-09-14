@@ -1,0 +1,7 @@
+create_table("inventories") {
+	t.Column("id", "uuid", {"primary": true})
+	t.Column("name", "string", {})
+	t.Column("price", "decimal", {})
+	t.Column("quantity", "integer", {})
+	t.Column("meta_tags", "string", {})
+}

@@ -34,6 +34,23 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: inventories; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.inventories (
+    id uuid NOT NULL,
+    name character varying(255) NOT NULL,
+    price numeric NOT NULL,
+    quantity integer NOT NULL,
+    meta_tags character varying(255) NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.inventories OWNER TO postgres;
+
+--
 -- Name: schema_migration; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -77,6 +94,14 @@ CREATE TABLE public.users (
 
 
 ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: inventories inventories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.inventories
+    ADD CONSTRAINT inventories_pkey PRIMARY KEY (id);
+
 
 --
 -- Name: transactions transactions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
