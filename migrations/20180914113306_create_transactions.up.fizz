@@ -1,0 +1,7 @@
+create_table("transactions") {
+	t.Column("id", "uuid", {"primary": true})
+	t.Column("to", "text", {})
+	t.Column("from", "text", {})
+	t.Column("amount", "integer", {})
+	t.Column("items", "string", {})
+}
