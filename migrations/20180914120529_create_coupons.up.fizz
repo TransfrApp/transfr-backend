@@ -1,0 +1,7 @@
+create_table("coupons") {
+	t.Column("id", "uuid", {"primary": true})
+	t.Column("name", "string", {})
+	t.Column("code", "string", {})
+	t.Column("discount_percentage", "integer", {})
+	t.Column("discount_set_value", "decimal", {})
+}
