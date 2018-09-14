@@ -16,7 +16,7 @@ type Coupon struct {
 	UpdatedAt          time.Time `json:"updated_at" db:"updated_at"`
 	Name               string    `json:"name" db:"name"`
 	Code               string    `json:"code" db:"code"`
-	DiscountPercentage integer   `json:"discount_percentage" db:"discount_percentage"`
+	DiscountPercentage int       `json:"discount_percentage" db:"discount_percentage"`
 	DiscountSetValue   float64   `json:"discount_set_value" db:"discount_set_value"`
 }
 

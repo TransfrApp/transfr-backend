@@ -16,7 +16,7 @@ type Inventory struct {
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
 	Name      string    `json:"name" db:"name"`
 	Price     float64   `json:"price" db:"price"`
-	Quantity  integer   `json:"quantity" db:"quantity"`
+	Quantity  int       `json:"quantity" db:"quantity"`
 	MetaTags  string    `json:"meta_tags" db:"meta_tags"`
 }
 

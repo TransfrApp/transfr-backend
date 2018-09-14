@@ -16,7 +16,7 @@ type Transaction struct {
 	UpdatedAt time.Time `json:"updated_at" db:"updated_at"`
 	To        string    `json:"to" db:"to"`
 	From      string    `json:"from" db:"from"`
-	Amount    integer   `json:"amount" db:"amount"`
+	Amount    int       `json:"amount" db:"amount"`
 	Items     string    `json:"items" db:"items"`
 }
 
