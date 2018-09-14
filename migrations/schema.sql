@@ -34,6 +34,23 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
+-- Name: coupons; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.coupons (
+    id uuid NOT NULL,
+    name character varying(255) NOT NULL,
+    code character varying(255) NOT NULL,
+    discount_percentage integer NOT NULL,
+    discount_set_value numeric NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.coupons OWNER TO postgres;
+
+--
 -- Name: inventories; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -94,6 +111,14 @@ CREATE TABLE public.users (
 
 
 ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: coupons coupons_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.coupons
+    ADD CONSTRAINT coupons_pkey PRIMARY KEY (id);
+
 
 --
 -- Name: inventories inventories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
