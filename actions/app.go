@@ -50,6 +50,7 @@ func App() *buffalo.App {
 		app.GET("/", HomeHandler)
 		app.GET("/users", UserHandler)
 		app.GET("/transactions", GetTransactions)
+		app.GET("/inventory", GetInventory)
 
 		// POST Methods
 
