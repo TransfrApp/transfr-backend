@@ -46,8 +46,16 @@ func App() *buffalo.App {
 		// Remove to disable this.
 		app.Use(middleware.PopTransaction(models.DB))
 
+		// GET Methods
 		app.GET("/", HomeHandler)
 		app.GET("/users", UserHandler)
+		app.GET("/transactions", GetTransactions)
+
+		// POST Methods
+
+		// PATCH METHODS
+
+		// DELETE Methods
 
 	}
 
