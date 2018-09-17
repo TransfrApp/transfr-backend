@@ -10,6 +10,7 @@ import (
 	"github.com/gobuffalo/validate/validators"
 )
 
+// Transaction Struct declares the model strucutre for Transaction
 type Transaction struct {
 	ID        uuid.UUID `json:"id" db:"id"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
@@ -18,6 +19,7 @@ type Transaction struct {
 	From      string    `json:"from" db:"from"`
 	Amount    int       `json:"amount" db:"amount"`
 	Items     string    `json:"items" db:"items"`
+	User      *User     `belongs_to: "user"`
 }
 
 // String is not required by pop and may be deleted
