@@ -21,6 +21,7 @@ type User struct {
 	WalletAddress string       `json:"wallet_address" db:"wallet_address"`
 	Coupon        *Coupon      `has_many:"coupons"`
 	Transaction   *Transaction `has_many:"transactions"`
+	Inventory     *Inventory   `has_many:"inventories"`
 }
 
 // String is not required by pop and may be deleted

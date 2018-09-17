@@ -10,6 +10,7 @@ import (
 	"github.com/gobuffalo/validate/validators"
 )
 
+// Inventory Struct declares the structure of Inventory Model
 type Inventory struct {
 	ID        uuid.UUID `json:"id" db:"id"`
 	CreatedAt time.Time `json:"created_at" db:"created_at"`
@@ -18,6 +19,7 @@ type Inventory struct {
 	Price     float64   `json:"price" db:"price"`
 	Quantity  int       `json:"quantity" db:"quantity"`
 	MetaTags  string    `json:"meta_tags" db:"meta_tags"`
+	User      *User     `belongs_to:"user"`
 }
 
 // String is not required by pop and may be deleted
