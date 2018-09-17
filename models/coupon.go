@@ -10,6 +10,7 @@ import (
 	"github.com/gobuffalo/validate/validators"
 )
 
+// Coupon declares the model structure for coupons
 type Coupon struct {
 	ID                 uuid.UUID `json:"id" db:"id"`
 	CreatedAt          time.Time `json:"created_at" db:"created_at"`
@@ -18,6 +19,7 @@ type Coupon struct {
 	Code               string    `json:"code" db:"code"`
 	DiscountPercentage int       `json:"discount_percentage" db:"discount_percentage"`
 	DiscountSetValue   float64   `json:"discount_set_value" db:"discount_set_value"`
+	User               *User     `belongs_to:"user"`
 }
 
 // String is not required by pop and may be deleted
