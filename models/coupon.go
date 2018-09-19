@@ -19,7 +19,7 @@ type Coupon struct {
 	Code               string    `json:"code" db:"code"`
 	DiscountPercentage int       `json:"discount_percentage" db:"discount_percentage"`
 	DiscountSetValue   float64   `json:"discount_set_value" db:"discount_set_value"`
-	User               *User     `belongs_to:"user"`
+	User               User      `belongs_to:"users" db:"u_id"`
 }
 
 // String is not required by pop and may be deleted

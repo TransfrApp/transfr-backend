@@ -19,7 +19,7 @@ type Inventory struct {
 	Price     float64   `json:"price" db:"price"`
 	Quantity  int       `json:"quantity" db:"quantity"`
 	MetaTags  string    `json:"meta_tags" db:"meta_tags"`
-	User      *User     `belongs_to:"user"`
+	User      *User     `belongs_to:"users" db:"u_id"`
 }
 
 // String is not required by pop and may be deleted

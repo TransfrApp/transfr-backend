@@ -19,7 +19,7 @@ type Transaction struct {
 	From      string    `json:"from" db:"from"`
 	Amount    int       `json:"amount" db:"amount"`
 	Items     string    `json:"items" db:"items"`
-	User      *User     `belongs_to: "user"`
+	User      *User     `belongs_to: "users" db:"u_id"`
 }
 
 // String is not required by pop and may be deleted
