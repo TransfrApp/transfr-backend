@@ -1,1 +1,1 @@
-add_column("inventories", "user_id", "uuid", {})
+add_column("inventories", "user_id", "integer", {})

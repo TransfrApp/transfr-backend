@@ -1,1 +1,1 @@
-add_column("transactions", "user_id", "uuid", {})
+add_column("transactions", "user_id", "integer", {})

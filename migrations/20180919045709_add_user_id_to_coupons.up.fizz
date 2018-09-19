@@ -1,1 +1,1 @@
-add_column("coupons", "user_id", "uuid", {})
+add_column("coupons", "user_id", "integer", {})
