@@ -61,7 +61,8 @@ CREATE TABLE public.inventories (
     quantity integer NOT NULL,
     meta_tags character varying(255) NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    user_id uuid NOT NULL
 );
 
 

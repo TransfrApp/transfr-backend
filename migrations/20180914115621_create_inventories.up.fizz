@@ -4,4 +4,5 @@ create_table("inventories") {
 	t.Column("price", "decimal", {})
 	t.Column("quantity", "integer", {})
 	t.Column("meta_tags", "string", {})
+	t.ForeignKey("user_id", {"users": ["id"]}, {"on_delete": "cascade"})
 }
