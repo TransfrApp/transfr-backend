@@ -44,7 +44,8 @@ CREATE TABLE public.coupons (
     discount_percentage integer NOT NULL,
     discount_set_value numeric NOT NULL,
     created_at timestamp without time zone NOT NULL,
-    updated_at timestamp without time zone NOT NULL
+    updated_at timestamp without time zone NOT NULL,
+    user_id uuid NOT NULL
 );
 
 
