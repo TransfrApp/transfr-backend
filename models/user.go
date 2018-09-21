@@ -12,16 +12,16 @@ import (
 
 // User Struct declares the model strucutre for Users
 type User struct {
-	ID            uuid.UUID   `json:"id" db:"id"`
-	CreatedAt     time.Time   `json:"created_at" db:"created_at"`
-	UpdatedAt     time.Time   `json:"updated_at" db:"updated_at"`
-	Name          string      `json:"name" db:"name"`
-	Email         string      `json:"email" db:"email"`
-	Password      string      `json:"password" db:"password"`
-	WalletAddress string      `json:"wallet_address" db:"wallet_address"`
-	Coupon        Coupon      `has_many:"coupons"`
-	Transaction   Transaction `has_many:"transactions"`
-	Inventory     Inventory   `has_many:"inventories"`
+	ID            uuid.UUID    `json:"id" db:"id"`
+	CreatedAt     time.Time    `json:"created_at" db:"created_at"`
+	UpdatedAt     time.Time    `json:"updated_at" db:"updated_at"`
+	Name          string       `json:"name" db:"name"`
+	Email         string       `json:"email" db:"email"`
+	Password      string       `json:"password" db:"password"`
+	WalletAddress string       `json:"wallet_address" db:"wallet_address"`
+	Coupon        *Coupon      `has_many:"coupons"`
+	Transaction   *Transaction `has_many:"transactions"`
+	Inventory     *Inventory   `has_many:"inventories"`
 }
 
 // String is not required by pop and may be deleted
