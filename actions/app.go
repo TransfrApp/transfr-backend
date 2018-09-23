@@ -59,6 +59,7 @@ func App() *buffalo.App {
 		app.POST("/users", ur.CreateUser)
 
 		// PATCH METHODS
+		app.PATCH("/users/{id}", UpdateUser)
 
 		// DELETE Methods
 
