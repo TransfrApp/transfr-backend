@@ -1,6 +1,7 @@
 package actions
 
 import (
+	"fmt"
 	"transfr_backend/models"
 
 	"github.com/gobuffalo/buffalo"
@@ -14,7 +15,7 @@ type UserResource struct{}
 
 // UserHandler declares the actions for the users in the DB
 func (ur UserResource) UserHandler(c buffalo.Context) error {
-	return c.Render(200, r.JSON(map[string]string{"message": "Welcome to Users!"}))
+	return c.Render(200, r.JSON(db))
 }
 
 // CreateUser creates a user
@@ -23,5 +24,7 @@ func (ur UserResource) CreateUser(c buffalo.Context) error {
 		ID: uuid.Must(uuid.NewV4()),
 	}
 	db[user.ID] = *user
+
+	fmt.Println("Printing DB", db)
 	return c.Render(201, r.JSON(user))
 }
