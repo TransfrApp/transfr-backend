@@ -1,10 +1,10 @@
 package actions
 
 import (
-	"fmt"
 	"transfr_backend/models"
 
 	"github.com/gobuffalo/buffalo"
+	"github.com/gobuffalo/pop"
 	"github.com/gobuffalo/uuid"
 )
 
@@ -20,11 +20,17 @@ func (ur UserResource) UserHandler(c buffalo.Context) error {
 
 // CreateUser creates a user
 func (ur UserResource) CreateUser(c buffalo.Context) error {
-	user := &models.User{
-		ID: uuid.Must(uuid.NewV4()),
-	}
-	db[user.ID] = *user
+	// Get the DB connection from the context
+	tx := c.Value("tx").(*pop.Connection)
 
-	fmt.Println("Printing DB", db)
+	user := models.User{}
+
+	user.ID = uuid.Must(uuid.NewV4())
+	user.Email = "Test Email"
+	user.Name = "Test User"
+	user.Password = "changeme"
+
+	tx.Create(&user)
+
 	return c.Render(201, r.JSON(user))
 }

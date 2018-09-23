@@ -55,7 +55,8 @@ func App() *buffalo.App {
 		app.GET("/inventory", GetInventory)
 
 		// POST Methods
-		app.POST("/users/create", ur.CreateUser)
+		app.POST("/users", ur.CreateUser)
+
 		// PATCH METHODS
 
 		// DELETE Methods
