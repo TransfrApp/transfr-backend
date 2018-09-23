@@ -3,7 +3,6 @@ package actions
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"time"
 	"transfr_backend/models"
 
@@ -12,14 +11,23 @@ import (
 	"github.com/gobuffalo/uuid"
 )
 
-var db = make(map[uuid.UUID]models.User)
+// var db = make(map[uuid.UUID]models.User)
 
 // UserResource as a helper method
 type UserResource struct{}
 
-// UserHandler declares the actions for the users in the DB
-func (ur UserResource) UserHandler(c buffalo.Context) error {
-	return c.Render(200, r.JSON(db))
+// GetUser declares the actions for the users in the DB
+func (ur UserResource) GetUser(c buffalo.Context) error {
+	db, err := pop.Connect("development")
+	if err != nil {
+		fmt.Println("Connection Issue", err)
+	}
+	users := []models.User{}
+	userErr := db.All(&users)
+	if userErr != nil {
+		fmt.Println("Issue with find all user", userErr)
+	}
+	return c.Render(200, r.JSON(users))
 }
 
 // UserResponse is a model of the data coming back from the PUT requests
@@ -35,6 +43,7 @@ type UserResponse struct {
 
 // CreateUser creates a user
 func (ur UserResource) CreateUser(c buffalo.Context) error {
+
 	// Establish a new user object;
 	user := models.User{}
 	var u UserResponse
@@ -54,9 +63,8 @@ func (ur UserResource) CreateUser(c buffalo.Context) error {
 	user.Email = u.Email
 	user.Name = u.Name
 	user.Password = u.Password
+	user.WalletAddress = u.WalletAddress
 
-	fmt.Println("Request Stuff", req)
-	log.Println("Request Body", u.Email)
 	tx.Create(&user)
 
 	return c.Render(201, r.JSON(user))

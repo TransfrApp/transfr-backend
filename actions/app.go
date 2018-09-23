@@ -50,7 +50,7 @@ func App() *buffalo.App {
 
 		// GET Methods
 		app.GET("/", HomeHandler)
-		app.GET("/users", ur.UserHandler)
+		app.GET("/users", ur.GetUser)
 		app.GET("/transactions", GetTransactions)
 		app.GET("/inventory", GetInventory)
 
