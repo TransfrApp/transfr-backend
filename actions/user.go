@@ -16,8 +16,8 @@ import (
 // UserResource as a helper method
 type UserResource struct{}
 
-// GetUser declares the actions for the users in the DB
-func (ur UserResource) GetUser(c buffalo.Context) error {
+// GetAllUsers declares the actions for the users in the DB
+func (ur UserResource) GetAllUsers(c buffalo.Context) error {
 	db, err := pop.Connect("development")
 	if err != nil {
 		fmt.Println("Connection Issue", err)
@@ -28,6 +28,32 @@ func (ur UserResource) GetUser(c buffalo.Context) error {
 		fmt.Println("Issue with find all user", userErr)
 	}
 	return c.Render(200, r.JSON(users))
+}
+
+// GetUser gets back a single user with the users id
+// This route is declared at "/users/{id}"
+func (ur UserResource) GetUser(c buffalo.Context) error {
+	// Connect to the DB
+	db, err := pop.Connect("development")
+	if err != nil {
+		fmt.Println("Error Connecting to DB", err)
+	}
+	// connect to user model
+	user := models.User{}
+
+	//pull back param from URL
+	// get id and format to uuid
+	id, userErr := uuid.FromString(c.Param("id"))
+	if userErr != nil {
+		return c.Render(200, r.JSON(map[string]string{"error": "There was an error with the params you passed in"}))
+	}
+
+	// Find the user in the DB
+	findErr := db.Find(&user, id)
+	if findErr != nil {
+		fmt.Println("Error finding user", findErr)
+	}
+	return c.Render(200, r.JSON(user))
 }
 
 // UserResponse is a model of the data coming back from the PUT requests
