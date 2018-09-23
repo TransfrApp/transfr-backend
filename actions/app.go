@@ -52,7 +52,7 @@ func App() *buffalo.App {
 		app.GET("/transactions", GetTransactions)
 		app.GET("/inventory", GetInventory)
 
-		// POST Methods
+		// PUT Methods
 
 		// PATCH METHODS
 
