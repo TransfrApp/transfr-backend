@@ -62,7 +62,7 @@ func App() *buffalo.App {
 		app.PATCH("/users/{id}", UpdateUser)
 
 		// DELETE Methods
-
+		app.DELETE("/users/{id}", ur.DeleteUser)
 	}
 
 	return app

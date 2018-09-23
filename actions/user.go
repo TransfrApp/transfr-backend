@@ -9,6 +9,7 @@ import (
 	"github.com/gobuffalo/buffalo"
 	"github.com/gobuffalo/pop"
 	"github.com/gobuffalo/uuid"
+	"github.com/pkg/errors"
 )
 
 // var db = make(map[uuid.UUID]models.User)
@@ -143,4 +144,27 @@ func UpdateUser(c buffalo.Context) error {
 		fmt.Println("Update user error", updateUserErr)
 	}
 	return c.Render(200, r.JSON(user))
+}
+
+// DeleteUser deletes the user
+func (ur UserResource) DeleteUser(c buffalo.Context) error {
+	// Get the DB connection from the context
+	tx, ok := c.Value("tx").(*pop.Connection)
+	if !ok {
+		return errors.WithStack(errors.New("no transaction found"))
+	}
+
+	// Allocate an empty User
+	user := &models.User{}
+
+	// To find the User the parameter user_id is used.
+	if err := tx.Find(user, c.Param("id")); err != nil {
+		return c.Error(404, err)
+	}
+
+	if err := tx.Destroy(user); err != nil {
+		return errors.WithStack(err)
+	}
+
+	return c.Render(200, r.JSON(map[string]string{"success": "Hell yeah, that mother fucker just got wrecked"}))
 }
